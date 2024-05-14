@@ -728,6 +728,9 @@ if(WITH_STACK_TRACE)
           src/base/elf_mem_image.cc
           src/base/vdso_support.cc
           ${STACKTRACE_INCLUDES})
+  set_source_files_properties(src/stacktrace.cc PROPERTIES
+    COMPILE_OPTIONS -Wno-unused-variable
+  )
   add_library(stacktrace INTERFACE)
   add_library(stacktrace_object OBJECT ${libstacktrace_la_SOURCES})
   target_link_libraries(stacktrace INTERFACE ${unwind_libs} ${LIBSPINLOCK})
